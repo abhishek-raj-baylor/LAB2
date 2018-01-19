@@ -1,5 +1,6 @@
 #include <iostream>//deals with input output
 using namespace std;
+int size=0;
 struct node{
 public:
     int data;
@@ -27,6 +28,7 @@ public:
         else{
             tail->n=temp;
             tail=temp;
+            size++;
         }
     }
     void insert(int a)
@@ -35,8 +37,10 @@ public:
         temp->data=a;
         tail->n=temp;
         temp->n=NULL;
+        size++;
     }
     void insertat(int a,int b){//insert an element at a specified position
+        size++;
         node *p=new node;
         node *q=new node;
         node *temp=new node;
@@ -51,6 +55,7 @@ public:
     }
     void delet()//deletes the element at the end
     {
+        size--;
         node *t=new node;
         node *p=new node;
         t=head;
@@ -65,6 +70,7 @@ public:
     }
     void deleteat(int a)//function to deleate at aparticular position
     {
+        size--;
         node *t=new node;//temperory node
         node *p=new node;
         t=head;
@@ -92,6 +98,7 @@ public:
             cout<<"NULL";
         }
     }
+    int sizee(){return(size);}
 };
 int main()
 {
@@ -112,4 +119,5 @@ int main()
     cout<<"after deleting at mid";
     obj1.deleteat(2);
     obj1.display();
+    cout<<"size="<<obj1.sizee();
 }
